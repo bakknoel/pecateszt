@@ -15,6 +15,27 @@ else
 {
     echo "Az adadtbázis kapcsolat sikertelen!<br>"
 }
+$query = "Select * FROM fishingrod";
+$result = $db->executeSelectQuery($query);
+
+if ($result == "hiba")
+{
+    echo "Lekérdezés sikeres<br>"
+    echo "<pre>";
+    print_r($result);
+    echo "</pre";
+}
+
+else
+{
+    echo "Lekérdezés sikertelen!<br>";
+}
+
+//Teszteljük a lezárást
+
+$db->closeDB();
+echo "Lezárva az adatbázis <br>"
+$result = $db->executeSelectQuery($query);
 
 
 ?>
