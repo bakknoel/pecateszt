@@ -1,9 +1,9 @@
 <?php
 require_once("dbcontroller.php");
 
-class Fishingrod{
+class FishingRod{
+private $fishingrods = [];
 
-        private $fishingrods = [];
         public function __construct()
         {
             $query = "SELECT fr_ID, name FROM fishingrod";
@@ -11,29 +11,34 @@ class Fishingrod{
             $this->fishingrods = $dbvez->executeSelectQuery($query);
             $dbvez->closeDB();
         }
-        public function getAllFishingrods()
+
+        public function getAllFishingRods()
         {
-            
+           
             return $this->fishingrods;
         }
+
         public function getFishingRodById($RodsId)
         {
             $query = "SELECT fr_ID, name FROM fishingRod WHERE fr_ID = ".$RodsId;
             $dbvez = new DBController();
-            $this->fishingRods = $dbvez->executeSelectQuery($query);
-            $dbvez->closeDB();
-            return $this->fishingrods;
-        }
-        public function getFishingRodByType($TypeId)
-        {
-            $query = "SELECT fr_ID, name FROM fishingrod
-            inner join type on fishingrod-type_ID = type.t_id
-            where type.m_name '".$TypeId."'";
-            $dbvez = new DBController;
             $this->fishingrods = $dbvez->executeSelectQuery($query);
             $dbvez->closeDB();
             return $this->fishingrods;
         }
+
+        public function getFishingRodByType($TypeId)
+        {
+            $query = "SELECT fr_ID, name FROM fishingrod
+            inner join type on fishingrod.type_ID = type.t_id
+            where type.m_name= '".$TypeId."'";
+            $dbvez = new DBController();
+            $this->fishingrods = $dbvez->executeSelectQuery($query);
+            $dbvez->closeDB();
+            return $this->fishingrods;
+        }
+
 }
+
 
 ?>
