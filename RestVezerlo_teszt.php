@@ -1,8 +1,8 @@
 <?php
 
-require_once("RestVezerlo.php");
+require_once("restVezerlo.php");
 
-$FishingRodrest = new $fishingRodRestKezelo();
+$FishingRodrest = new fishingRodRestKezelo();
 echo "Összes horgászbot lekérdezése: ";
 $_GET["view"] = "all";
 $FishingRodrest-> getAllFRod();
